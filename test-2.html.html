@@ -1,0 +1,364 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0}</style>
+<title>MEJO 141 Practice Test 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  /* Layout: single reading column, sticky score + section nav, every practice form is its own section */
+  :root{
+    --paper:#f6f5f0; --raised:#ffffff; --line:#e1ddd0;
+    --ink:#1c2836; --ink-soft:#57626d; --ink-faint:#8b93a0;
+    --accent:#2c72a8; --accent-soft:#eaf3fa; --accent-ink:#ffffff;
+    --gold:#96701a; --gold-soft:#faf1da;
+    --good:#2f7d5b; --good-soft:#e7f4ee;
+    --bad:#b23b3b; --bad-soft:#fbeaea;
+    --shadow:rgba(28,40,54,0.10);
+    --serif:'Source Serif 4',Georgia,serif; --display:'Fraunces',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12181f; --raised:#1a2129; --line:#2a3541;
+      --ink:#e9edf1; --ink-soft:#a9b4bf; --ink-faint:#6b7784;
+      --accent:#6fb4e0; --accent-soft:#1b2c3a; --accent-ink:#0d1721;
+      --gold:#e0b84a; --gold-soft:#2b2413;
+      --good:#4fae82; --good-soft:#16281f;
+      --bad:#e07272; --bad-soft:#2c1717;
+      --shadow:rgba(0,0,0,0.4);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12181f; --raised:#1a2129; --line:#2a3541;
+    --ink:#e9edf1; --ink-soft:#a9b4bf; --ink-faint:#6b7784;
+    --accent:#6fb4e0; --accent-soft:#1b2c3a; --accent-ink:#0d1721;
+    --gold:#e0b84a; --gold-soft:#2b2413;
+    --good:#4fae82; --good-soft:#16281f;
+    --bad:#e07272; --bad-soft:#2c1717;
+    --shadow:rgba(0,0,0,0.4);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.5}
+  h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;color:var(--ink)}
+  button,select,textarea{font-family:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}
+  .wrap{max-width:820px;margin:0 auto;padding-inline:20px}
+
+  header.hero{padding-block:36px 14px}
+  .hero h1{font-size:clamp(26px,5vw,36px);font-weight:600;line-height:1.1;margin-top:6px}
+  .hero p{font-family:var(--display);font-style:italic;color:var(--ink-soft);margin:8px 0 0;font-size:16.5px}
+
+  .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+  .bar-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:8px;flex-wrap:wrap}
+  .stat{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+  .stat b{font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums}
+  .link-btn{background:none;border:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);cursor:pointer;text-decoration:underline;padding:4px}
+  .nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+  .nav button{flex:0 0 auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;border:1px solid var(--line);background:var(--raised);color:var(--ink-soft);border-radius:20px;padding:5px 11px;cursor:pointer;white-space:nowrap}
+  .nav button:hover{border-color:var(--accent);color:var(--accent)}
+
+  main{padding-block:6px 90px}
+  section{padding-top:38px;scroll-margin-top:110px}
+  .sec-head{margin-bottom:14px}
+  .sec-head h2{font-size:22px;font-weight:600}
+  .sec-head p{color:var(--ink-soft);margin:4px 0 0;font-size:14.5px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);border-radius:12px;padding:1px 8px;margin-left:8px;vertical-align:middle}
+
+  .q{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 3px var(--shadow);min-width:0}
+  .q-num{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.05em}
+  .q-text{font-size:16px;margin:5px 0 11px;font-weight:600}
+  .opts{display:flex;flex-direction:column;gap:7px}
+  .opt{text-align:left;font-size:15px;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:var(--paper);cursor:pointer;transition:border-color .12s,background .12s}
+  .opt:hover:not(:disabled){border-color:var(--accent)}
+  .opt:disabled{cursor:default;color:var(--ink)}
+  .opt.correct{background:var(--good-soft);border-color:var(--good)}
+  .opt.incorrect{background:var(--bad-soft);border-color:var(--bad)}
+  .tf{flex-direction:row}
+  .tf .opt{flex:1;text-align:center;font-weight:600}
+  .explain{display:none;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:14px;color:var(--ink-soft)}
+  .explain.show{display:block}
+  .ok{color:var(--good)} .no{color:var(--bad)}
+
+  .btn{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;background:none;border:1px solid var(--accent);color:var(--accent);padding:6px 13px;border-radius:20px;cursor:pointer}
+  .btn:hover{background:var(--accent-soft)}
+  .btn.solid{background:var(--accent);color:var(--accent-ink)}
+  .btn.solid:hover{opacity:.9}
+  textarea{width:100%;min-height:62px;font-size:15px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);resize:vertical}
+  .model{display:none;margin-top:10px;font-size:14.5px;color:var(--ink-soft);background:var(--accent-soft);padding:10px 12px;border-radius:8px}
+  .model.show{display:block}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+
+  .note{background:var(--gold-soft);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:11px 15px;margin:0 0 12px;font-size:14.5px}
+  .note b{color:var(--gold);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:3px}
+
+  /* cheat sheet */
+  details{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:0 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:17px;padding:13px 0}
+  details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+  details ul,details ol{margin:0 0 14px;padding-left:20px;font-size:15px}
+  details li{margin-bottom:3px}
+  .tbl{overflow-x:auto;margin-bottom:14px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+
+  /* ordering */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+  .chip{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:7px 12px;font-size:14.5px;cursor:pointer}
+  .chip:hover:not(:disabled){border-color:var(--accent)}
+  .chip.used{opacity:.4}
+  .chip.flash{border-color:var(--bad);background:var(--bad-soft)}
+  .seq{display:flex;flex-direction:column;gap:6px;margin:10px 0;counter-reset:s}
+  .seq div{background:var(--good-soft);border:1px solid var(--good);border-radius:8px;padding:6px 12px;font-size:14.5px;counter-increment:s}
+  .seq div::before{content:counter(s) ". ";font-family:var(--mono);font-size:12px;color:var(--good)}
+
+  /* matching */
+  .mrow{display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:8px 12px;align-items:center;margin-bottom:9px}
+  .mrow .term{font-weight:600;font-size:15px;min-width:0}
+  select{width:100%;min-width:0;font-size:14px;padding:7px 8px;border-radius:8px;border:1px solid var(--line);background:var(--paper)}
+  select.correct{border-color:var(--good);background:var(--good-soft)}
+  select.incorrect{border-color:var(--bad);background:var(--bad-soft)}
+  .fix{grid-column:1/-1;font-size:13px;color:var(--ink-soft)}
+  @media (max-width:560px){.mrow{grid-template-columns:1fr}}
+
+  /* cases */
+  .toolpick{display:flex;gap:8px;margin:4px 0 12px}
+  .toolpick .btn.on{background:var(--accent);color:var(--accent-ink)}
+  .step{margin-bottom:10px}
+  .step label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+  .check{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;margin:5px 0}
+  .check input{margin-top:5px;accent-color:var(--accent)}
+  .facts{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14.5px;margin-bottom:12px}
+  .facts ul{margin:4px 0 0;padding-left:18px}
+
+  /* ads */
+  .ad{background:var(--paper);border:1px dashed var(--ink-faint);border-radius:8px;padding:12px 14px;font-size:15px;margin-bottom:12px}
+  .ad .fine{font-size:12px;color:var(--ink-soft);margin-top:6px}
+  .lt{display:grid;grid-template-columns:130px auto 1fr;gap:6px 10px;align-items:start;padding:8px 0;border-top:1px solid var(--line)}
+  .lt .name{font-weight:600;font-size:14.5px}
+  .lt .picks{display:flex;gap:6px}
+  .lt .picks .btn{padding:4px 10px}
+  .lt .picks .btn.sel{background:var(--accent);color:var(--accent-ink)}
+  .lt .why{font-size:13.5px;color:var(--ink-soft);min-width:0}
+  @media (max-width:560px){.lt{grid-template-columns:1fr}}
+
+  /* flashcards */
+  .fc-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .fc-filter .btn.on{background:var(--accent);color:var(--accent-ink)}
+  .card{perspective:900px;margin-bottom:12px}
+  .card-in{min-height:190px;background:var(--raised);border:1px solid var(--line);border-radius:14px;box-shadow:0 2px 6px var(--shadow);padding:26px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;width:100%}
+  .card-in .side{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .card-in .txt{font-family:var(--display);font-size:19px;line-height:1.35}
+  .card-in.back{background:var(--accent-soft);border-color:var(--accent)}
+  .card-in.back .txt{font-family:var(--serif);font-size:16.5px}
+  .fc-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+
+  .finish{background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center;margin-top:30px}
+  .finish .big{font-family:var(--display);font-size:32px;font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+  .signoff{font-family:var(--display);font-style:italic;color:var(--gold);text-align:center;margin-top:18px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+  .timer{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--gold);font-variant-numeric:tabular-nums}
+  .tbtn{margin-left:8px}
+  .tool-badge{display:inline-block;font-family:var(--display);font-size:20px;font-weight:600;color:var(--accent);border:2px solid var(--accent);border-radius:10px;padding:4px 16px;margin:4px 0 10px}
+  .pony{background:var(--accent-soft);border-radius:10px;padding:12px 15px;font-size:14.5px;margin-bottom:14px}
+</style>
+
+<a class="btn" href="index.html" style="display:inline-block;text-decoration:none;margin-top:12px">&larr; Study site</a>
+<header class="hero wrap">
+  <div class="eyebrow">MEJO 141 &middot; Practice Test 2 &middot; Midterm Tue, Oct. 13</div>
+  <h1>Second practice test</h1>
+  <p>Built from Thursday&rsquo;s review slides and your professor&rsquo;s question style. No matching, just like the real test.</p>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="bar-top">
+      <span class="stat">Auto-graded <b id="sc">0</b> / <b id="tot">0</b> &nbsp;&middot;&nbsp; answered <b id="ans">0</b></span>
+      <span><span class="timer" id="tm">75:00</span><button class="link-btn tbtn" id="tgo" type="button">Start timer</button><button class="link-btn tbtn" id="reset" type="button">Reset all</button></span>
+    </div>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="intro">
+    <div class="note"><b>Test conditions</b>The real test is 75 minutes, closed book, no AI. The timer is optional. Cover the answers in your head before you click. Answer just what is asked, no &ldquo;what ifs.&rdquo;</div>
+    <div class="pony"><b>Open-ended questions:</b> answer exactly what is asked, directly and in your own words. Don&rsquo;t make your professor find the pony.</div>
+  </section>
+
+  <section id="mc"><div class="sec-head"><h2>Part A &middot; Multiple choice</h2><p>Mostly application, like the reading quizzes and dead guys homework.</p></div><div id="mc-list"></div></section>
+  <section id="tf"><div class="sec-head"><h2>Part B &middot; True / false</h2></div><div id="tf-list"></div></section>
+  <section id="sa"><div class="sec-head"><h2>Part C &middot; Short answer</h2><p>1&ndash;2 sentences. Write yours, then reveal a model answer. Not auto-graded.</p></div><div id="sa-list"></div></section>
+  <section id="case"><div class="sec-head"><h2>Part D &middot; Decision discussion</h2><p>Choose a case, then let the &ldquo;professor&rdquo; pick your tool. Explain the action you would take as the resident professional.</p></div><div id="case-box"></div></section>
+  <section id="tares"><div class="sec-head"><h2>Part E &middot; TARES an ad</h2><p>Made-up ads. Rate each letter, then compare with a suggested read.</p></div><div id="ad-list"></div></section>
+
+  <div class="finish">
+    <div class="stat">Auto-graded questions (Parts A and B)</div>
+    <div class="big"><span id="sc2">0</span> / <span id="tot2">0</span></div>
+    <div class="stat" style="margin-top:6px">Review what you missed, then redo the decision case with the other tool.</div>
+  </div>
+  <div class="signoff">&ldquo;You got this!!&rdquo;</div>
+</main>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  var score=0,total=0,answered=0;
+  function paint(){['sc','sc2'].forEach(function(i){$(i).textContent=score});['tot','tot2'].forEach(function(i){$(i).textContent=total});$('ans').textContent=answered;}
+  function mark(box,ok,msg){var ex=box.querySelector('.explain');ex.innerHTML=(ok?'<b class="ok">Correct.</b> ':'<b class="no">Not quite.</b> ')+msg;ex.classList.add('show');}
+
+  var LET=["T","A","R","E","S"];
+  var MC=[
+   {q:"Which dead guy recommends this action: Reporters can be justified in using a hidden camera in situations when the story involves a danger to public safety and open reporting won't work.",o:["Aristotle","Kant","Mill","Ross","Communitarians"],a:3,e:"'When' signals context: the situation is what justifies the action. 'If' would point to Mill."},
+   {q:"Editor Edna says, 'If we run the cover photo, sales may spike, but advertisers may leave and readers may lose trust. We run it only if the good outweighs the bad.' Edna is using the principles of:",o:["Aristotle","Kant","Mill","Ross","Communitarians"],a:2,e:"'If' and weighing potential outcomes: Mill."},
+   {q:"Phineas Phlingelphart will not pad his expense report because, 'If everyone padded theirs, expense reports would be meaningless.' Whose approach is this?",o:["Aristotle","Kant","Mill","Ross","Communitarians"],a:1,e:"Universalizing a maxim: Kant, the rules guy."},
+   {q:"Daphne wants to speak up in the meeting without being aggressive, but also without being timid. She looks for the right amount of assertiveness for her, in this situation. Which dead guy?",o:["Aristotle","Kant","Mill","Ross","Communitarians"],a:0,e:"The golden mean between deficiency (timid) and excess (aggressive): Aristotle."},
+   {q:"A PR rep tells her boss, 'Honest water-quality info is good for the whole town, and what's good for the town is good for our firm too.' Her reasoning reflects:",o:["Aristotle","Kant","Mill","Ross","Communitarians"],a:4,e:"Reciprocity: what's good for the community is good for me. Communitarians."},
+   {q:"Reporter Rufus gets a tip. He asks a trusted editor for other ways to get the story without burning his source, then lists four options. Which Bok step is he on?",o:["Step 1: conscience","Step 2: expert advice and options","Step 3: public discussion","Step 4: decide","Step 5: evaluate"],a:1,e:"Step 2: seek expert advice and identify at least three options."},
+   {q:"Where is the ventilation test used in Bok's model?",o:["Step 1, conscience","Step 2, consult others to identify options","Step 3, public discussion only","Step 4, decide","It isn't used in Bok"],a:1,e:"From class: second step. Consult others to identify options."},
+   {q:"A student writes 'honesty' and 'the town's right to know' in the first quadrant of her Potter Box. Where do they belong?",o:["Facts","Values","Principles","Loyalties","Nowhere"],a:1,e:"Facts are just the facts. Honesty and the right to know are values."},
+   {q:"Two roommates split a pizza: one cuts, the other chooses first. This is most like which test?",o:["Ventilation","Light of day","Veil of ignorance","Evaluate","Precedent"],a:2,e:"'I slice, you choose' levels the playing field, like the veil."},
+   {q:"Before posting her decision, Marge asks, 'Would I be OK with my mom, my boss and the whole town seeing exactly how I decided this?' Which test?",o:["Ventilation","Light of day","Veil of ignorance","Authority","Emotion"],a:1,e:"The Mom test: would you take full, open responsibility?"},
+   {q:"A candidate's ad shows only her own accomplishments. A classmate says it fails TARES because it's biased. Which response is best?",o:["She's right, ads must be balanced","All ads are one-sided; what matters is whether the one side included is accurate","Bias only matters in the Equity step","Bias is fine only for political ads","Bias means it fails Authenticity"],a:1,e:"All ads have a bias. That's persuasion. The one side presented should be truthful."},
+   {q:"An ad cites a study, but most viewers never look it up. Which is most accurate?",o:["It's an Equity failure","It is not an equity issue, though it might reflect inauthenticity or disrespect by the advertiser","It automatically fails Truthfulness","It automatically passes TARES"],a:1,e:"Viewers not checking is not an equity issue. Check the source yourself."},
+   {q:"Which tool do you use in the Equity step to make sure the average person can understand and has a fair shot?",o:["Light of day","Ventilation","Veil of ignorance","Golden mean","Duty proper"],a:2,e:"Put on the veil to see other standpoints."},
+   {q:"A candidate's ad says, 'I will eliminate the national debt within six months of my election.' How do you treat that in Truthfulness?",o:["Fact check it as a statement of fact","It's a future prediction, not a fact to verify","Fail it automatically","Pass it automatically","Move it to Equity"],a:1,e:"Future predictions, opinions and hyperbole are not facts."},
+   {q:"An occupation meets four of the six profession criteria. A classmate calls it a semi-profession; her friend calls it a profession. Who is right?",o:["Only the classmate","Only the friend","Both can be defended, depending on whether you want all six, a majority, or call anything short of six a semi-profession","Neither, five are required","Neither, accreditation decides"],a:2,e:"Purists want all six; others a majority; some but not all can be a semi-profession. You get to decide."},
+   {q:"The Daily Planet's public editor gets 40 complaints about a mislabeled photo. What would she most likely do?",o:["Order the photo editor fired","Investigate and recommend a course of action to leaders","Change the newsroom's policy herself","Ignore it, she works for the owners","Edit all future photo captions"],a:1,e:"An ombuds investigates and recommends. No power to change policy."},
+   {q:"Per the SPJ guidance on your slides, which is a valid reason to grant anonymity?",o:["The source asked for it","The source wants to even the score with a rival","The source may face danger, retribution or other harm and has information that cannot be obtained elsewhere","It boosts the reporter's position","It makes the story more dramatic"],a:2,e:"Reserve anonymity for those at risk with info you can't get elsewhere, and explain why it was granted."},
+   {q:"Which practice would say cannibalism is OK for cannibals?",o:["Cultural relativism","Cultural pluralism","Kant's categorical imperative","Communitarianism","Rawls's veil"],a:0,e:"Relativism says all judgments are equal, which ends ethical debate. Pluralism respects interdependence and shared basic values."},
+   {q:"Marcus reads a paragraph, swaps in synonyms sentence by sentence, and adds a citation. His professor calls this:",o:["Responsible paraphrasing","Patchwriting","Fair use","Plagiarism-free","Enlightened self-interest"],a:1,e:"Patchwriting is as dishonest as plagiarism. Read the whole passage, then write one original sentence with a citation."},
+   {q:"A reporter promises a source anonymity, then her editor prints the name anyway. Which lesson from class applies?",o:["Editors always decide","Don't make promises you can't keep","Anonymous sources are always unethical","Promises to sources are not binding","The First Amendment excuses breaking promises"],a:1,e:"The case on your slides: the First Amendment did not exempt the paper from generally applicable laws about a promise of confidentiality. Don't make promises you can't keep."},
+   {q:"I'm most likely to focus on my own wants and needs at which Kohlberg level?",o:["Pre-conventional","Conventional","Post-conventional","None of these"],a:0,e:"Self-interest, avoiding punishment, chasing rewards."}
+  ];
+  var TF=[
+   ["In the Equity step of TARES, the goal is to determine if the information is biased.",false,"Equity is equal comprehension: can the average person understand it? All persuasion is biased; the one side should be truthful."],
+   ["In the Potter Box, identifying principles may include assessing competing duties.",true,"Principles involve the dead guys, and competing duties are Ross."],
+   ["The light of day test says you should ask someone you trust about the options you are considering.",false,"That is the ventilation test. Light of day is open responsibility, the Mom test."],
+   ["Mill proposed the ventilation test.",false,"Ventilation is a decision-making tool from class, not one of the dead guys' ideas."],
+   ["An organization's ombuds changes policies based on input from its communities.",false,"An ombuds gathers input and recommends. They can't change policy."],
+   ["PRSA requires its members to get accreditation.",false,"Accreditation is optional."],
+   ["Regression is only a problem in the ethic of care.",false,"It can happen in either approach. The same goes for aspirational listening."],
+   ["Cultural pluralism assumes all judgments are equal and ends ethical debate.",false,"That describes relativism. Pluralism respects interdependence and shared basic values."],
+   ["If viewers do not check an ad's sources, that creates an equity problem.",false,"It is not an equity issue, though it can reflect inauthenticity or disrespect."],
+   ["Persuasion is inherently one-sided, and the one side presented should still be accurate.",true,"Repeat after me."],
+   ["To use the veil of ignorance, you must accept or like the other perspectives.",false,"You do not have to accept, like or legitimize them, or change your mind."],
+   ["If an ad includes a source, you can assume the claim is accurate.",false,"Check the source, find other sources, and verify."],
+   ["Bok's public discussion requires everyone affected to be in the same room.",false,"In your head is OK."],
+   ["The SPJ default is to identify sources clearly.",true,"Reserve anonymity for sources who face danger or harm and have info not available elsewhere."],
+   ["A reporter may take information off the record without anyone's approval.",false,"Never without a supervisor's approval and an understanding of the outlet's policy."],
+   ["None of the six ethics codes from the scavenger hunt is legally enforceable.",true,"Enforceable would mean you lose the ability to practice."],
+   ["Licensing is required for communication occupations.",false,"There is no licensing in communication occupations."],
+   ["A professional association's code applies to its members only.",true,"A company's code applies to its employees and board."],
+   ["Kant would allow a small exception for a harmless lie.",false,"Categorical imperatives apply to everyone in every situation."],
+   ["Ross's duty proper is the most important duty in a specific context.",true,"Identify competing duties, identify the context, pick the duty proper."],
+   ["In the Potter Box, your decision can become a new fact.",true,"That's the feedback loop."],
+   ["Enlightened self-interest can still pass the Social Responsibility step of TARES.",true,"Enlightened self-interest and honest one-sidedness are fine."],
+   ["According to Bok, you can stop after consulting your conscience.",false,"Finish all three steps."],
+   ["Mill weighs the pros and cons of taking an action but not of failing to take it.",false,"Mill weighs both acting and not acting."],
+   ["The midterm will include a matching section.",false,"No matching."]
+  ];
+  var SA=[
+   ["How is the ventilation test used in Bok's model?","In step 2: consult others (trusted people, experts, even dead guys) to identify options and check whether you missed something."],
+   ["Why is an ad's bias not automatically a TARES failure?","Ads are inherently one-sided persuasion. What matters is that the one side presented is accurate, sincere, respectful, equitable and socially responsible."],
+   ["Why isn't it an equity issue if viewers don't check an ad's information, and what might it reflect instead?","Equity is about whether the average person can understand the message and find more info. A viewer's choice not to look doesn't create inequity, but it can reflect inauthenticity or disrespect by the advertiser."],
+   ["Name two things an ombuds can do and one thing an ombuds cannot do.","Can: gather input from the public, investigate complaints, explain journalism to the public, make recommendations to leaders. Cannot: change, set or set aside policy or management decisions."],
+   ["In 1-2 sentences, how is the veil of ignorance different from the light of day test?","Veil: decide as if you didn't know your position, to level the playing field and see other perspectives. Light of day: would you take full, open responsibility for your decision (the Mom test)?"],
+   ["A reporter promised a source anonymity, then learns the source lied to push a personal agenda. Pick one dead guy and say what he would recommend.","Sample, Ross: weigh the competing duties of keeping the promise and being truthful to readers in this context, then pick the duty proper. Sample, Mill: weigh outcomes of keeping vs. breaking the promise. Sample, Kant: apply a rule you could universalize about promises."],
+   ["Paraphrase in one sentence: 'Reserve anonymity for sources who may face danger, retribution or other harm, and have information that cannot be obtained elsewhere. Explain why anonymity was granted.' (SPJ)","Sample: SPJ says anonymity should be limited to at-risk sources with unique information, and reporters should tell readers why it was given."],
+   ["Define cultural relativism and give one problem with it.","It treats all judgments as equal, which eliminates the need for ethical debate. Problem: it fails to recognize injustice or oppression."],
+   ["Explain why a promise of confidentiality is something to be careful about.","Breaking it can have real consequences, including legal ones. The case on your slides found the First Amendment does not exempt journalists from generally applicable laws. Don't make promises you can't keep."]
+  ];
+
+  var BOK=[["Conscience","How do you feel about the act itself?"],["Expert advice and options","Who do you ventilate with? List at least three options."],["Public discussion","How would each affected party respond?"],["Decide","What will you do?"],["Evaluate","How will you assess it afterward?"]];
+  var POT=[["Facts","Just the facts, ma'am."],["Values","What would you give up other things for? Which compete?"],["Principles","Apply 1-2 dead guys by name."],["Loyalties","To which people, including yourself? Prioritize."],["Decide","What will you do?"],["Evaluate","How will you assess it afterward?"]];
+  var CASES=[
+   {t:"Case A: The anonymous tip",s:"You are a county government reporter. An employee offers documents about a questionable contract on the condition that she stays anonymous. You suspect she wants to hurt her boss, who beat her for a promotion. The documents look real and you can't get them elsewhere. Your editor says run it only if you can confirm it.",
+    c:["Facts first: what you have, what you can verify, who knows what.","Values that compete: public's right to know and accuracy vs. fairness to the boss and the source's safety.","Loyalties to people: readers, the source, the boss, your editor, yourself.","Principles by name, such as Mill (outcomes of running vs. not), Kant (a rule about anonymity you could universalize), Ross (duty to inform vs. duty to be fair, in this context).","Uses SPJ ideas: identify sources by default, anonymity is for sources facing harm, check motives, explain why anonymity was granted, get supervisor approval.","At least three options (Bok) such as corroborate on the record, run with an explanation, push for her name with permission, hold the story.","Add-on tests, a clear decision, and how you'll evaluate it."]},
+   {t:"Case B: The ghostwritten posts",s:"You are a PR specialist. Your CEO wants you to ghostwrite his LinkedIn posts and blog without telling anyone. Employees and the public assume he writes them himself.",
+    c:["Facts: who writes, who is credited, what readers assume.","Values that compete: honesty and transparency vs. efficiency and loyalty to the CEO.","Loyalties to people: the CEO, readers, your colleagues, the profession, yourself.","Principles by name, such as Kant (could everyone ghostwrite undisclosed?), Mill, Communitarians (trust in the organization).","Considers whether it is expected, and whether that is enough, and whether disclosure is needed.","Checks the PRSA values you can recall: disclosure of information, enhancing trust in the profession.","Options, add-on tests, a clear decision, an evaluation plan."]},
+   {t:"Case C: The weekend retweet",s:"You are a newsroom editor. A weekend sports reporter retweeted a joke mocking a local coach, on his personal account. A colleague points it out and readers are tagging the paper. You must decide what to do.",
+    c:["Facts: whose account, what was posted, who saw it, what policy exists.","Values that compete: free personal expression vs. the paper's credibility and fairness.","Loyalties to people: readers, the reporter, the coach, colleagues, the owners, yourself.","Principles by name, such as Mill, Ross (context, competing duties), Communitarians.","Recognizes that personal and professional lives merge online and posts can reflect on the news organization.","Considers 'needs to be said, by you, right now?' before posting.","Options, tests, a clear decision, how to evaluate."]}
+  ];
+  var ADS=[
+   {t:"Councilwoman Park",ad:"'Councilwoman Park built three new parks and cut permit wait times from 40 days to 12. See the city report at cityreport.example/permits.' Paid for by Park for Council, shown clearly on screen.",fine:"The linked city report confirms both figures.",
+    L:[["T","P","The one side presented is accurate and checkable."],["A","P","The sponsor is clear and the message is sincere advocacy."],["R","P","No stereotypes or insults."],["E","P","Easy to understand, with a way to find more."],["S","P","One-sided, honest, no group harmed. Not a failure."]]},
+   {t:"ZapZing Energy",ad:"A cartoon mascot says, 'ZapZing gives you wings! Zero sugar, all the fun.' The ad runs on kids' video channels and at school sports events.",fine:"The can does contain zero sugar but a high amount of caffeine, listed on the nutrition label.",
+    L:[["T","P","'Gives you wings' is hyperbole, and 'zero sugar' is accurate."],["A","P","Nothing suggests the claims are insincere."],["R","P","Arguable, but no one is insulted or stereotyped."],["E","C","Arguable. Young viewers may not understand caffeine risks the way an average adult would."],["S","C","Marketing a high-caffeine product to kids raises a real social responsibility concern."]]},
+   {t:"Moms for Safer Streets",ad:"A friendly website and video from 'Moms for Safer Streets' urge residents to support a new development. Every statistic is accurate. The site never says it is funded and run by the developer's PAC.",fine:"Link to donors appears only on page 9 of a PDF.",
+    L:[["T","P","The claims themselves are accurate."],["A","C","Hiding the real sponsor is a sincerity and responsibility problem."],["R","C","Arguable. Posing as neighbors treats viewers as targets, not decision-makers."],["E","C","The average viewer can't easily tell who is behind it."],["S","C","Fake grassroots messaging lowers trust in persuasive messages."]]}
+  ];
+
+  function buildMC(){MC.forEach(function(d,i){total++;
+    var box=el('div','q','<div class="q-num">MC '+(i+1)+'</div><div class="q-text"></div><div class="opts"></div><div class="explain"></div>');
+    box.querySelector('.q-text').textContent=d.q;var w=box.querySelector('.opts');
+    d.o.forEach(function(t,k){var b=el('button','opt');b.type='button';b.textContent=String.fromCharCode(65+k)+'. '+t;
+      b.addEventListener('click',function(){var all=w.querySelectorAll('.opt');all.forEach(function(x){x.disabled=true});var ok=k===d.a;b.classList.add(ok?'correct':'incorrect');if(!ok)all[d.a].classList.add('correct');answered++;if(ok)score++;paint();mark(box,ok,d.e);});
+      w.appendChild(b);});
+    $('mc-list').appendChild(box);});}
+  function buildTF(){TF.forEach(function(d,i){total++;
+    var box=el('div','q','<div class="q-num">T/F '+(i+1)+'</div><div class="q-text"></div><div class="opts tf"></div><div class="explain"></div>');
+    box.querySelector('.q-text').textContent=d[0];var w=box.querySelector('.opts');
+    [true,false].forEach(function(v){var b=el('button','opt');b.type='button';b.textContent=v?'True':'False';
+      b.addEventListener('click',function(){var all=w.querySelectorAll('.opt');all.forEach(function(x){x.disabled=true});var ok=v===d[1];b.classList.add(ok?'correct':'incorrect');if(!ok)all[d[1]?0:1].classList.add('correct');answered++;if(ok)score++;paint();mark(box,ok,d[2]);});
+      w.appendChild(b);});
+    $('tf-list').appendChild(box);});}
+  function buildSA(){SA.forEach(function(d,i){
+    var box=el('div','q','<div class="q-num">SA '+(i+1)+'</div><div class="q-text"></div><textarea placeholder="Type your answer here..."></textarea><div class="row"><button class="btn" type="button">Show model answer</button></div><div class="model"></div>');
+    box.querySelector('.q-text').textContent=d[0];box.querySelector('textarea').id='sa_'+i;
+    var m=box.querySelector('.model');m.textContent=d[1];var b=box.querySelector('.btn');
+    b.addEventListener('click',function(){m.classList.toggle('show');b.textContent=m.classList.contains('show')?'Hide model answer':'Show model answer';});
+    $('sa-list').appendChild(box);});}
+  function buildCase(){
+    var box=el('div','q','<div class="row" id="ctabs"></div><div class="q-text" id="ctitle"></div><p id="cscen" style="margin:0 0 10px;font-size:15px"></p><div class="row"><button class="btn solid" id="cpick" type="button">Professor picks my tool</button></div><div id="ctool"></div><div id="csteps"></div><div class="step"><label>Add-on tests</label><div id="cadds"></div></div><div class="row"><button class="btn" id="cshow" type="button">Show what a strong answer covers</button></div><div class="model" id="cmodel"></div>');
+    $('case-box').appendChild(box);
+    var ci=0,tool=null;
+    function steps(){var s=$('csteps');s.innerHTML='';if(!tool)return;(tool==='Bok'?BOK:POT).forEach(function(x,i){var d=el('div','step','<label></label><textarea></textarea>');var ta=d.querySelector('textarea');ta.id='c'+ci+tool+i;ta.placeholder='Your answer...';d.querySelector('label').textContent=(i+1)+'. '+x[0]+' - '+x[1];s.appendChild(d);});}
+    function draw(){
+      var c=CASES[ci];$('ctitle').textContent=c.t;$('cscen').textContent=c.s;
+      $('ctool').innerHTML=tool?'<div class="tool-badge">Your tool: '+tool+'</div>':'<div class="stat" style="margin:8px 0">Click the button to get your tool.</div>';
+      steps();var m=$('cmodel');m.classList.remove('show');$('cshow').textContent='Show what a strong answer covers';
+      var h='<b>A strong answer covers:</b>';c.c.forEach(function(x,k){var id='cv'+ci+'_'+k;h+='<label class="check" for="'+id+'"><input type="checkbox" id="'+id+'"><span></span></label>';});
+      m.innerHTML=h;m.querySelectorAll('.check span').forEach(function(sp,k){sp.textContent=c.c[k];});
+    }
+    var tabs=$('ctabs');
+    CASES.forEach(function(c,i){var b=el('button','btn'+(i===0?' solid':''));b.type='button';b.textContent='Case '+String.fromCharCode(65+i);
+      b.addEventListener('click',function(){ci=i;tool=null;tabs.querySelectorAll('.btn').forEach(function(x,k){x.classList.toggle('solid',k===i)});draw();});tabs.appendChild(b);});
+    $('cpick').addEventListener('click',function(){tool=Math.random()<.5?'Bok':'Potter';draw();});
+    $('cshow').addEventListener('click',function(){var m=$('cmodel');m.classList.toggle('show');$('cshow').textContent=m.classList.contains('show')?'Hide checklist':'Show what a strong answer covers';});
+    var adds=$('cadds');['Ventilation: who would I ask, and what might I have missed?','Light of day: would I take full, open responsibility?','Veil of ignorance: would I choose this without knowing which party I am?'].forEach(function(t,k){var l=el('label','check','<input type="checkbox" id="add'+k+'"><span></span>');l.querySelector('span').textContent=t;l.htmlFor='add'+k;adds.appendChild(l);});
+    draw();
+  }
+  function buildAds(){ADS.forEach(function(a,ai){
+    var box=el('div','q','<div class="q-num">AD '+(ai+1)+'</div><div class="q-text"></div><div class="ad"><div class="adtxt"></div><div class="fine"></div></div><div class="lts"></div><div class="stat tally" style="margin-top:8px"></div>');
+    box.querySelector('.q-text').textContent=a.t;box.querySelector('.adtxt').textContent=a.ad;box.querySelector('.fine').textContent=a.fine;
+    var lts=box.querySelector('.lts'),tally=box.querySelector('.tally'),done=0,match=0;
+    var names={T:'T  Truthfulness',A:'A  Authenticity',R:'R  Respect',E:'E  Equity',S:'S  Social resp.'};
+    a.L.forEach(function(l){var row=el('div','lt','<div class="name"></div><div class="picks"><button type="button" class="btn">Pass</button><button type="button" class="btn">Concern</button></div><div class="why"></div>');
+      row.querySelector('.name').textContent=names[l[0]];var bs=row.querySelectorAll('.btn'),why=row.querySelector('.why'),got=false;
+      [['P',0],['C',1]].forEach(function(p){bs[p[1]].addEventListener('click',function(){if(got)return;got=true;bs[p[1]].classList.add('sel');var ok=p[0]===l[1];done++;if(ok)match++;
+        why.innerHTML=(ok?'<b class="ok">Matches my read.</b> ':'<b class="no">Different from my read.</b> ')+'Suggested: '+(l[1]==='P'?'Pass':'Concern')+'. ';why.appendChild(document.createTextNode(l[2]));tally.textContent='Matched my read on '+match+' of '+done;});});
+      lts.appendChild(row);});
+    $('ad-list').appendChild(box);});}
+
+  [['mc','Multiple choice'],['tf','True/false'],['sa','Short answer'],['case','Decision discussion'],['tares','TARES an ad']].forEach(function(n){
+    var b=el('button',null,n[1]);b.type='button';b.addEventListener('click',function(){var t=$(n[0]);if(t.scrollIntoView)t.scrollIntoView({behavior:'smooth',block:'start'});});$('nav').appendChild(b);});
+
+  /* timer */
+  var secs=75*60,tid=null;
+  function tdraw(){var m=Math.floor(secs/60),s=secs%60;$('tm').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
+  $('tgo').addEventListener('click',function(){
+    if(tid){clearInterval(tid);tid=null;$('tgo').textContent='Resume timer';return;}
+    $('tgo').textContent='Pause timer';
+    tid=setInterval(function(){secs--;if(secs<=0){secs=0;clearInterval(tid);tid=null;$('tgo').textContent='Time is up';}tdraw();},1000);});
+
+  function buildAll(){['mc-list','tf-list','sa-list','case-box','ad-list'].forEach(function(i){$(i).innerHTML=''});
+    score=0;total=0;answered=0;buildMC();buildTF();buildSA();buildCase();buildAds();paint();}
+  $('reset').addEventListener('click',function(){if(tid){clearInterval(tid);tid=null;}secs=75*60;tdraw();$('tgo').textContent='Start timer';buildAll();window.scrollTo({top:0,behavior:'smooth'});});
+  buildAll();
+})();
+</script>
