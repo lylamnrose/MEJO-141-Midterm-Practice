@@ -1,0 +1,691 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>MEJO 141 Midterm Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  /* Layout: single reading column, sticky score + section nav, every practice form is its own section */
+  :root{
+    --paper:#f6f5f0; --raised:#ffffff; --line:#e1ddd0;
+    --ink:#1c2836; --ink-soft:#57626d; --ink-faint:#8b93a0;
+    --accent:#2c72a8; --accent-soft:#eaf3fa; --accent-ink:#ffffff;
+    --gold:#96701a; --gold-soft:#faf1da;
+    --good:#2f7d5b; --good-soft:#e7f4ee;
+    --bad:#b23b3b; --bad-soft:#fbeaea;
+    --shadow:rgba(28,40,54,0.10);
+    --serif:'Source Serif 4',Georgia,serif; --display:'Fraunces',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12181f; --raised:#1a2129; --line:#2a3541;
+      --ink:#e9edf1; --ink-soft:#a9b4bf; --ink-faint:#6b7784;
+      --accent:#6fb4e0; --accent-soft:#1b2c3a; --accent-ink:#0d1721;
+      --gold:#e0b84a; --gold-soft:#2b2413;
+      --good:#4fae82; --good-soft:#16281f;
+      --bad:#e07272; --bad-soft:#2c1717;
+      --shadow:rgba(0,0,0,0.4);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12181f; --raised:#1a2129; --line:#2a3541;
+    --ink:#e9edf1; --ink-soft:#a9b4bf; --ink-faint:#6b7784;
+    --accent:#6fb4e0; --accent-soft:#1b2c3a; --accent-ink:#0d1721;
+    --gold:#e0b84a; --gold-soft:#2b2413;
+    --good:#4fae82; --good-soft:#16281f;
+    --bad:#e07272; --bad-soft:#2c1717;
+    --shadow:rgba(0,0,0,0.4);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.5}
+  h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;color:var(--ink)}
+  button,select,textarea{font-family:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}
+  .wrap{max-width:820px;margin:0 auto;padding-inline:20px}
+
+  header.hero{padding-block:36px 14px}
+  .hero h1{font-size:clamp(26px,5vw,36px);font-weight:600;line-height:1.1;margin-top:6px}
+  .hero p{font-family:var(--display);font-style:italic;color:var(--ink-soft);margin:8px 0 0;font-size:16.5px}
+
+  .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+  .bar-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:8px;flex-wrap:wrap}
+  .stat{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+  .stat b{font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums}
+  .link-btn{background:none;border:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);cursor:pointer;text-decoration:underline;padding:4px}
+  .nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+  .nav button{flex:0 0 auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;border:1px solid var(--line);background:var(--raised);color:var(--ink-soft);border-radius:20px;padding:5px 11px;cursor:pointer;white-space:nowrap}
+  .nav button:hover{border-color:var(--accent);color:var(--accent)}
+
+  main{padding-block:6px 90px}
+  section{padding-top:38px;scroll-margin-top:110px}
+  .sec-head{margin-bottom:14px}
+  .sec-head h2{font-size:22px;font-weight:600}
+  .sec-head p{color:var(--ink-soft);margin:4px 0 0;font-size:14.5px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);border-radius:12px;padding:1px 8px;margin-left:8px;vertical-align:middle}
+
+  .q{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 3px var(--shadow);min-width:0}
+  .q-num{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.05em}
+  .q-text{font-size:16px;margin:5px 0 11px;font-weight:600}
+  .opts{display:flex;flex-direction:column;gap:7px}
+  .opt{text-align:left;font-size:15px;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:var(--paper);cursor:pointer;transition:border-color .12s,background .12s}
+  .opt:hover:not(:disabled){border-color:var(--accent)}
+  .opt:disabled{cursor:default;color:var(--ink)}
+  .opt.correct{background:var(--good-soft);border-color:var(--good)}
+  .opt.incorrect{background:var(--bad-soft);border-color:var(--bad)}
+  .tf{flex-direction:row}
+  .tf .opt{flex:1;text-align:center;font-weight:600}
+  .explain{display:none;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:14px;color:var(--ink-soft)}
+  .explain.show{display:block}
+  .ok{color:var(--good)} .no{color:var(--bad)}
+
+  .btn{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;background:none;border:1px solid var(--accent);color:var(--accent);padding:6px 13px;border-radius:20px;cursor:pointer}
+  .btn:hover{background:var(--accent-soft)}
+  .btn.solid{background:var(--accent);color:var(--accent-ink)}
+  .btn.solid:hover{opacity:.9}
+  textarea{width:100%;min-height:62px;font-size:15px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);resize:vertical}
+  .model{display:none;margin-top:10px;font-size:14.5px;color:var(--ink-soft);background:var(--accent-soft);padding:10px 12px;border-radius:8px}
+  .model.show{display:block}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+
+  .note{background:var(--gold-soft);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:11px 15px;margin:0 0 12px;font-size:14.5px}
+  .note b{color:var(--gold);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:3px}
+
+  /* cheat sheet */
+  details{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:0 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:17px;padding:13px 0}
+  details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+  details ul,details ol{margin:0 0 14px;padding-left:20px;font-size:15px}
+  details li{margin-bottom:3px}
+  .tbl{overflow-x:auto;margin-bottom:14px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+
+  /* ordering */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+  .chip{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:7px 12px;font-size:14.5px;cursor:pointer}
+  .chip:hover:not(:disabled){border-color:var(--accent)}
+  .chip.used{opacity:.4}
+  .chip.flash{border-color:var(--bad);background:var(--bad-soft)}
+  .seq{display:flex;flex-direction:column;gap:6px;margin:10px 0;counter-reset:s}
+  .seq div{background:var(--good-soft);border:1px solid var(--good);border-radius:8px;padding:6px 12px;font-size:14.5px;counter-increment:s}
+  .seq div::before{content:counter(s) ". ";font-family:var(--mono);font-size:12px;color:var(--good)}
+
+  /* matching */
+  .mrow{display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:8px 12px;align-items:center;margin-bottom:9px}
+  .mrow .term{font-weight:600;font-size:15px;min-width:0}
+  select{width:100%;min-width:0;font-size:14px;padding:7px 8px;border-radius:8px;border:1px solid var(--line);background:var(--paper)}
+  select.correct{border-color:var(--good);background:var(--good-soft)}
+  select.incorrect{border-color:var(--bad);background:var(--bad-soft)}
+  .fix{grid-column:1/-1;font-size:13px;color:var(--ink-soft)}
+  @media (max-width:560px){.mrow{grid-template-columns:1fr}}
+
+  /* cases */
+  .toolpick{display:flex;gap:8px;margin:4px 0 12px}
+  .toolpick .btn.on{background:var(--accent);color:var(--accent-ink)}
+  .step{margin-bottom:10px}
+  .step label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+  .check{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;margin:5px 0}
+  .check input{margin-top:5px;accent-color:var(--accent)}
+  .facts{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14.5px;margin-bottom:12px}
+  .facts ul{margin:4px 0 0;padding-left:18px}
+
+  /* ads */
+  .ad{background:var(--paper);border:1px dashed var(--ink-faint);border-radius:8px;padding:12px 14px;font-size:15px;margin-bottom:12px}
+  .ad .fine{font-size:12px;color:var(--ink-soft);margin-top:6px}
+  .lt{display:grid;grid-template-columns:130px auto 1fr;gap:6px 10px;align-items:start;padding:8px 0;border-top:1px solid var(--line)}
+  .lt .name{font-weight:600;font-size:14.5px}
+  .lt .picks{display:flex;gap:6px}
+  .lt .picks .btn{padding:4px 10px}
+  .lt .picks .btn.sel{background:var(--accent);color:var(--accent-ink)}
+  .lt .why{font-size:13.5px;color:var(--ink-soft);min-width:0}
+  @media (max-width:560px){.lt{grid-template-columns:1fr}}
+
+  /* flashcards */
+  .fc-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .fc-filter .btn.on{background:var(--accent);color:var(--accent-ink)}
+  .card{perspective:900px;margin-bottom:12px}
+  .card-in{min-height:190px;background:var(--raised);border:1px solid var(--line);border-radius:14px;box-shadow:0 2px 6px var(--shadow);padding:26px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;width:100%}
+  .card-in .side{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .card-in .txt{font-family:var(--display);font-size:19px;line-height:1.35}
+  .card-in.back{background:var(--accent-soft);border-color:var(--accent)}
+  .card-in.back .txt{font-family:var(--serif);font-size:16.5px}
+  .fc-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+
+  .finish{background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center;margin-top:30px}
+  .finish .big{font-family:var(--display);font-size:32px;font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+  .signoff{font-family:var(--display);font-style:italic;color:var(--gold);text-align:center;margin-top:18px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="hero wrap">
+  <div class="eyebrow">MEJO 141 &middot; Midterm &middot; Tue, Oct. 13, 2:00 p.m.</div>
+  <h1>Midterm practice, every format</h1>
+  <p>Bok, Potter and TARES first, then professionalism, with Test 1 review built in. Click an answer to check it.</p>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="bar-top">
+      <span class="stat">Auto-graded <b id="sc">0</b> / <b id="tot">0</b> &nbsp;&middot;&nbsp; answered <b id="ans">0</b></span>
+      <button class="link-btn" id="reset" type="button">Reset all</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="learn">
+    <div class="note"><b>How to use this</b>Test format: about one-third multiple choice, true/false, short answer (1&ndash;2 sentences), and a decision discussion where the professor picks Bok or Potter. TARES is also fair game. There is no matching on the real test, so the matching section is just extra practice. Answer what is asked, no &ldquo;what ifs.&rdquo;</div>
+    <div class="sec-head"><h2>Know cold</h2><p>Open any block for a quick refresher.</p></div>
+
+    <details>
+      <summary>Bok and Potter steps</summary>
+      <div class="tbl"><table>
+        <tr><th>Bok</th><th>Potter Box</th></tr>
+        <tr><td>1. Conscience</td><td>1. Facts</td></tr>
+        <tr><td>2. Expert advice + at least 3 options</td><td>2. Values (what you'd give up other things for)</td></tr>
+        <tr><td>3. Public discussion (in your head is OK)</td><td>3. Principles (1&ndash;2 dead guys)</td></tr>
+        <tr><td>4. Decide</td><td>4. Loyalties (to people, incl. yourself; prioritize)</td></tr>
+        <tr><td>5. Evaluate</td><td>5. Decide &nbsp;6. Evaluate</td></tr>
+      </table></div>
+      <ul>
+        <li><b>Ventilation:</b> ask trusted people and experts, did I miss something?</li>
+        <li><b>Light of day (Mom test):</b> would I take full, open responsibility?</li>
+        <li><b>Veil of ignorance (Rawls):</b> decide without knowing your position; level the playing field.</li>
+        <li><b>Contributors to decisions:</b> precedent, authority (external), logic (future), emotion (internal).</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>TARES</summary>
+      <div class="tbl"><table>
+        <tr><th>Letter</th><th>Core question</th><th>Hooks</th></tr>
+        <tr><td>T Truthfulness</td><td>Are claims (words and visuals) truthful? Are omissions deceptive?</td><td>Fact check; go to cited sources; opinion and hyperbole are not facts</td></tr>
+        <tr><td>A Authenticity</td><td>Is the advertiser sincere?</td><td>Would they buy their own message? Disclosure, stereotypes, intent</td></tr>
+        <tr><td>R Respect</td><td>Does it respect the audience and people in the ad?</td><td>Light of day test; Kant</td></tr>
+        <tr><td>E Equity</td><td>Level playing field?</td><td>Equal comprehension; veil of ignorance; can people find more info</td></tr>
+        <tr><td>S Social responsibility</td><td>Good for society?</td><td>If everyone could buy it, is society improved? Does it raise or lower trust in persuasion? Mill</td></tr>
+      </table></div>
+      <ul><li>Assess for an average adult. Purists want all 5; others a majority; some let one egregious failure sink it. Your call, with reasons.</li><li>One-sided ads are not inherently unethical. News should give multiple perspectives.</li></ul>
+    </details>
+
+    <details>
+      <summary>Professionalism: six criteria and ombuds</summary>
+      <ol>
+        <li>Specialized knowledge: training, accreditation (optional), licensing (required)</li>
+        <li>Public service over self service</li>
+        <li>Associations (individuals join, not companies)</li>
+        <li>Self-regulation, enforceable codes (enforceable = you lose the ability to practice; none in communication)</li>
+        <li>Status (public trust)</li>
+        <li>Autonomy</li>
+      </ol>
+      <ul><li>Purists: all six. Others: a majority. Some but not all: semi-profession.</li><li>Ombuds / public editor: independent boundary spanner between newsroom and public; investigates complaints, recommends, cannot change policy.</li></ul>
+    </details>
+
+    <details>
+      <summary>Dead guys, moral development, concepts</summary>
+      <div class="tbl"><table>
+        <tr><th>Guy</th><th>Focus</th><th>Hook</th></tr>
+        <tr><td>Aristotle</td><td>Moral agent</td><td>Golden mean, virtue</td></tr>
+        <tr><td>Kant</td><td>Act</td><td>Rules, categorical imperative</td></tr>
+        <tr><td>Mill</td><td>Consequences</td><td>Pros/cons, &ldquo;what if&rdquo;</td></tr>
+        <tr><td>Ross</td><td>Context</td><td>Competing duties, duty proper</td></tr>
+        <tr><td>Communitarian</td><td>Individual(s)/audience(s)</td><td>Community first, reciprocity</td></tr>
+      </table></div>
+      <ul><li>Kohlberg: pre-conventional, conventional (most of us), post-conventional (rare). No skipping.</li><li>Gilligan: self-interest, choosing a victim, interdependence.</li><li>Regression is a temporary lapse that can happen to anyone.</li><li>Patchwriting is as dishonest as plagiarism: read the passage, then write one original sentence with a citation.</li></ul>
+    </details>
+  </section>
+
+  <section id="mc">
+    <div class="sec-head"><h2>Multiple choice</h2><p>Cover the answers in your head first, then click.</p></div>
+    <div id="mc-list"></div>
+  </section>
+
+  <section id="tf">
+    <div class="sec-head"><h2>True / false</h2></div>
+    <div id="tf-list"></div>
+  </section>
+
+  <section id="order">
+    <div class="sec-head"><h2>Put it in order</h2><p>Click the steps in the right order. A wrong click flashes red and does not count as placed.</p></div>
+    <div id="order-list"></div>
+  </section>
+
+  <section id="match">
+    <div class="sec-head"><h2>Matching <span class="tag">extra practice</span></h2><p>Not on this test, but it is a good way to lock in pairs. Choose a match for each row, then check.</p></div>
+    <div id="match-list"></div>
+  </section>
+
+  <section id="sa">
+    <div class="sec-head"><h2>Short answer</h2><p>1&ndash;2 sentences each. Write yours, then reveal a model answer to compare. Not auto-graded.</p></div>
+    <div id="sa-list"></div>
+  </section>
+
+  <section id="cases">
+    <div class="sec-head"><h2>Decision discussion</h2><p>Pick Bok or Potter, work each step in your own words, then check yourself against what a strong answer covers. The professor picks the tool on test day, so run each case both ways.</p></div>
+    <div id="case-list"></div>
+  </section>
+
+  <section id="tares">
+    <div class="sec-head"><h2>TARES an ad</h2><p>These ads are made up for practice. Rate each letter, then compare with a suggested read. TARES is a judgment call, so focus on the reasoning.</p></div>
+    <div id="ad-list"></div>
+  </section>
+
+  <section id="cards">
+    <div class="sec-head"><h2>Flashcards</h2><p>Click a card to flip it.</p></div>
+    <div class="fc-filter" id="fc-filter"></div>
+    <div class="card"><button class="card-in" id="fc-card" type="button"></button></div>
+    <div class="fc-nav">
+      <button class="btn" id="fc-prev" type="button">Prev</button>
+      <span class="stat" id="fc-count"></span>
+      <button class="btn" id="fc-shuf" type="button">Shuffle</button>
+      <button class="btn solid" id="fc-next" type="button">Next</button>
+    </div>
+  </section>
+
+  <div class="finish">
+    <div class="stat">Auto-graded questions</div>
+    <div class="big"><span id="sc2">0</span> / <span id="tot2">0</span></div>
+    <div class="stat" style="margin-top:6px">Review what you missed, then try the decision cases again with the other tool.</div>
+  </div>
+  <div class="signoff">&ldquo;You got this!!&rdquo; &mdash; Don&rsquo;t forget to breathe.</div>
+</main>
+
+<script>
+(function(){
+  /* ---------- helpers ---------- */
+  var $ = function(id){return document.getElementById(id)};
+  function el(tag, cls, html){var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e;}
+  var score=0, total=0, answered=0;
+  function paint(){
+    ['sc','sc2'].forEach(function(i){$(i).textContent=score});
+    ['tot','tot2'].forEach(function(i){$(i).textContent=total});
+    $('ans').textContent=answered;
+  }
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function mark(box,ok,msg){
+    var ex=box.querySelector('.explain');
+    ex.innerHTML=(ok?'<b class="ok">Correct.</b> ':'<b class="no">Not quite.</b> ')+msg;
+    ex.classList.add('show');
+  }
+
+  /* ---------- multiple choice data ---------- */
+  var MC=[
+   {q:"You are using the Potter Box for the first time on a case. In what order do you work through the steps?",o:["Facts, loyalties, values, principles","Facts, values, principles, loyalties","Values, facts, principles, loyalties","Principles, facts, values, loyalties","Potter isn't fussy about the order"],a:1,e:"Facts, values, principles, loyalties, then decide and evaluate."},
+   {q:"What is Bok's first step?",o:["Consult your code of ethics","Identify the categorical imperatives","Consult your conscience","Hold a public discussion","None of the above"],a:2,e:"Conscience, then expert advice (with options), then public discussion."},
+   {q:"A reporter imagines how her editor, her source and her readers would each react if she printed a name, and plays the conversation out in her head. Which Bok step is this?",o:["Conscience","Expert advice","Decide","Public discussion","Evaluate"],a:3,e:"Step 3. Doing it in your head is OK when you can't get everyone together."},
+   {q:"At Bok's step 2, besides seeking expert advice, you should:",o:["Identify your loyalties","Identify at least three options that reduce the ethical problem","Pick your favorite dead guy","Survey the public","Decide"],a:1,e:"Step 2 is expert advice plus at least three options."},
+   {q:"In the Principles step, a student applies both Mill and Kant and they point different ways. What does that tell her?",o:["She did it wrong","The box allows only one principle","Conflicting principles are useful information about the trade-offs","She should skip to loyalties","Mill always wins"],a:2,e:"Applying more than one principle is the point. Conflict shows you the real trade-offs."},
+   {q:"A student lists 'transparency' and 'respect for the source' in the Loyalties step. What is the problem?",o:["Nothing, those are loyalties","Those are values; loyalties are to people","Loyalties come first","Respect belongs in principles","Loyalties must be to institutions"],a:1,e:"Loyalties are to people (include yourself). Ideas like respect and transparency go in the values step."},
+   {q:"Which add-on test asks, 'Would I take full, open responsibility for this decision?' (the Mom test)",o:["Ventilation test","Veil of ignorance","Light of day test","Golden mean","Evaluate"],a:2,e:"Light of day: act in private the way you would in full public view."},
+   {q:"A city editor sets layoff criteria without knowing whether she will be one of the people laid off, so the rules are fair. Which test is this?",o:["Light of day","Ventilation","Evaluate","Veil of ignorance","Authority"],a:3,e:"Rawls's veil of ignorance levels the playing field and equalizes power."},
+   {q:"Before deciding, a producer asks a trusted editor and a media-ethics professor, 'Did I miss anything? Any other options?' Which test is this?",o:["Ventilation","Light of day","Veil of ignorance","Precedent","TARES"],a:0,e:"Ventilation: ask people you trust, experts or dead guys, for their perspective."},
+   {q:"Which is NOT a reason to evaluate a decision after you act?",o:["Justify the action taken","Consider the repercussions","Identify new ethical situations","Guarantee you will get the same outcome next time","Self-reflection"],a:3,e:"Evaluation is for justifying, considering repercussions, making changes, spotting new situations and reflecting. It does not guarantee outcomes."},
+   {q:"A copy editor decides to cut a quote because 'the company code says so.' Which contributor to decision-making is she relying on?",o:["Precedent","Logic","Emotion","Authority"],a:3,e:"Authority is external: God, law, employer, codes."},
+   {q:"'It just feels wrong to me,' says the intern. Which contributor is this?",o:["Precedent","Authority","Logic","Emotion"],a:3,e:"Emotion is internal: personal feelings and intuition."},
+   {q:"'Last time we ran a story like this, the editor signed off.' Which contributor is this?",o:["Precedent","Authority","Logic","Emotion"],a:0,e:"Precedent: experience and history."},
+   {q:"A coffee ad says 'the best coffee in town.' How does TARES treat that claim?",o:["It fails Truthfulness unless a lab test is cited","It is opinion or hyperbole, usually not a truthfulness concern","It fails Equity","It fails Authenticity","It passes only if the ad is objective"],a:1,e:"Opinions, judgments and hyperbole are not facts to be fact-checked."},
+   {q:"An ad aimed at the general public is written in legal jargon the average adult cannot follow. Which TARES step is most at issue?",o:["T","A","R","E","S"],a:3,e:"Equity: equal comprehension and a level playing field for an average adult."},
+   {q:"A sponsor hides who paid for an online political ad. Which TARES step is most at issue?",o:["T","A","R","E","S"],a:1,e:"Authenticity covers the advertiser's sincerity and taking responsibility for the message (disclosure)."},
+   {q:"A vape brand targets teen-heavy social feeds. If everyone were able to buy the product, society would not be improved. Which TARES step is most at issue?",o:["T","A","R","E","S"],a:4,e:"Social responsibility asks whether society is improved or at least not harmed, and whether trust in persuasion goes up or down."},
+   {q:"Your slides pair the light of day test with which TARES step?",o:["Truthfulness","Authenticity","Respect","Equity","Social responsibility"],a:2,e:"Respect: for the reader or viewer and for the people in the ad. (The veil goes with Equity.)"},
+   {q:"An attack ad says 'according to a news story.' What is the best next step for Truthfulness?",o:["Assume a citation means it is true","Find the source, check accuracy and context, then look for other sources","Skip it, ads are biased anyway","Ask the sponsor","Call the ad deceptive"],a:1,e:"A citation alone does not make a claim factual. Go to the source and verify."},
+   {q:"Which statement about persuasive ads is accurate?",o:["Biased means misleading","One-sided ads are not inherently unethical","Ads and news should both present multiple perspectives","An ad must be objective to pass TARES","A one-sided ad cannot pass TARES"],a:1,e:"Ads are one-sided by nature. Biased does not mean false or misleading. News is the opposite."},
+   {q:"An assessor says one failed TARES step is so egregious it overshadows the other four, so the ad fails. Which view is that?",o:["The purist view","A recognized way to decide: one egregious failure can outweigh the rest","Majority rule","Not allowed, TARES has no pass or fail"],a:1,e:"Purists want all five, others a majority, others let one egregious failure sink it. It is your call, with reasons."},
+   {q:"The editor asks, 'What if we publish and the source loses her job?' Whose kind of question is this?",o:["Aristotle","Kant","Mill","Ross","Communitarian"],a:2,e:"'What if' points to potential outcomes: Mill."},
+   {q:"She says, 'Given the situation that created this dilemma, which duty matters most here?' Whose approach is this?",o:["Aristotle","Kant","Mill","Ross","Communitarian"],a:3,e:"Context and the duty proper: Ross."},
+   {q:"An employee follows a policy only to avoid being fired. Which Kohlberg level?",o:["Pre-conventional","Conventional","Post-conventional","Regression is not a level"],a:0,e:"Self-interest and avoiding punishment is pre-conventional."},
+   {q:"Which of the following is required by law for a person to practice a profession?",o:["Training","Accreditation","Licensing","Association membership","An ethics code"],a:2,e:"Licensing is required legal approval. Accreditation is an optional seal of approval. There is no licensing in communication occupations."},
+   {q:"A PR professional violates the PRSA code. Which outcome is most accurate?",o:["She is legally barred from communication work","She can be fired or criticized but not legally barred from communicating","She is disbarred","She loses her license","The government fines her"],a:1,e:"Codes in communication are not legally enforceable. Consequences of misconduct are not legal enforcement."},
+   {q:"Which best describes a news ombuds or public editor?",o:["Edits stories before publication","An independent bridge between newsroom and public who investigates complaints and recommends solutions","Sets newsroom policy","Sells advertising","Represents the owners"],a:1,e:"A boundary spanner. An ombuds has no power to set or change policy."},
+   {q:"'Individuals join, not companies' belongs under which of the six criteria?",o:["Status","Associations","Autonomy","Specialized knowledge","Public service"],a:1,e:"Associations: keepers of the codes, trainers, accreditors, networking."},
+   {q:"What is the best way to avoid patchwriting?",o:["Swap in synonyms","Read the whole passage, then write one original sentence with a citation","Rewrite sentence by sentence","Skip the citation if you reworded it","Ask AI to reword it"],a:1,e:"Patchwriting is as dishonest as plagiarism."},
+   {q:"AI-drafted ad copy contains an error that gets published. Who is accountable?",o:["The AI","The AI company","The people who use and publish it","No one","The audience"],a:2,e:"AI is not a peer with moral responsibility. Accountability belongs to people."}
+  ];
+
+  /* ---------- true / false data ---------- */
+  var TF=[
+   ["Bok says it is OK to hold the public discussion in your head if getting everyone affected together is not feasible.",true,"Doing it in your head is OK. Write it down."],
+   ["In Bok's model, once your conscience says the action is fine, you can stop.",false,"Finish all three steps. Stopping at conscience is flabby moral thinking."],
+   ["The first step of the Potter Box is identifying values.",false,"Facts come first."],
+   ["In Potter, loyalties are to people.",true,"Include yourself. Respect and transparency go in values."],
+   ["Bok and Potter both end with an evaluation step after you act.",true,"Evaluate to justify, consider repercussions, change, spot new situations and reflect."],
+   ["In Potter, your decision can become a new fact that sends you back to the first quadrant.",true,"That is the feedback loop."],
+   ["The veil of ignorance is meant to level the playing field and equalize power.",true,"Rawls."],
+   ["The ventilation test means asking people you trust, including experts, whether you missed something.",true,"Experts or dead guys."],
+   ["The light of day test is sometimes called the Mom test.",true,"Would you take full, open responsibility?"],
+   ["In TARES, Equity is about the advertiser's sincerity.",false,"Sincerity is Authenticity. Equity is a level playing field and equal comprehension."],
+   ["A viewer's lack of motivation to check an ad's sources creates inequity under TARES.",false,"It does not create inequity, though it may raise authenticity or respect questions about the advertiser."],
+   ["Social Responsibility asks whether an ad raises or lowers trust in persuasive messages.",true,"Along with whether society is improved or at least not harmed."],
+   ["One-sided ads are inherently unethical.",false,"One-sided promotional messages are not inherently unethical."],
+   ["TARES is assessed for an average adult.",true,"Use the expectation of an average adult."],
+   ["Purists say an ad must pass all five TARES criteria.",true,"Others accept a majority, and some let one egregious failure sink it."],
+   ["Opinions and hyperbole in an ad should be fact-checked like facts.",false,"They are not facts."],
+   ["At least one of the six ethics codes from the scavenger hunt is legally enforceable.",false,"None are. Enforceable means you lose the ability to practice."],
+   ["Licensing is required for communication occupations.",false,"There is no licensing in communication occupations."],
+   ["A news ombuds has the power to change newsroom policy.",false,"An ombuds recommends. No power to set, change or set aside policy."],
+   ["Companies, not individuals, join professional associations.",false,"Individuals join."],
+   ["If an occupation meets some but not all of the six criteria, some people call it a semi-profession.",true,"Purists want all six. Others a majority."],
+   ["The midterm includes a matching section.",false,"No matching this time."],
+   ["You should memorize names and dates from the news cases.",false,"Cases are examples for applying concepts."],
+   ["Regression happens only if you are in the ethic of care.",false,"It can happen to anyone."],
+   ["According to Kohlberg, you can skip from pre-conventional to post-conventional.",false,"Stages are hierarchical."],
+   ["Enlightened self-interest means doing good for others that also benefits you.",true,"A conventional-level motivation."]
+  ];
+
+  /* ---------- ordering data ---------- */
+  var ORDER=[
+   {t:"Potter Box, first time through",s:["Facts","Values","Principles","Loyalties","Decide","Evaluate"]},
+   {t:"Bok model",s:["Consult your conscience","Seek expert advice and identify at least three options","Conduct a public discussion","Decide","Evaluate"]},
+   {t:"TARES",s:["Truthfulness","Authenticity","Respect","Equity","Social responsibility"]},
+   {t:"Kohlberg's levels, lowest to highest",s:["Pre-conventional","Conventional","Post-conventional"]}
+  ];
+
+  /* ---------- matching data ---------- */
+  var MATCH=[
+   {t:"Add-on tests",rows:[["Ventilation","Ask trusted people and experts: did I miss something?"],["Light of day","Would I take full, open responsibility?"],["Veil of ignorance","Decide without knowing your position"]]},
+   {t:"TARES letter and core question",rows:[["T","Are the claims, words and visuals, truthful?"],["A","Is the advertiser sincere?"],["R","Does it respect the audience and people in the ad?"],["E","Is there a level playing field?"],["S","Is it good for society, and does it affect trust in persuasion?"]]},
+   {t:"Dead guy and ethical communication focus",rows:[["Aristotle","Moral agent"],["Kant","Act"],["Mill","Consequences"],["Ross","Context"],["Communitarian","Individual(s) / audience(s)"]]},
+   {t:"Six criteria and a key idea",rows:[["Specialized knowledge","Training, accreditation, licensing"],["Public service over self service","Enlightened self-interest fits here"],["Associations","Keepers of the codes; individuals join"],["Self-regulation","Enforceable means you lose the ability to practice"],["Status","High public trust and confidence"],["Autonomy","Relative freedom from direct supervision"]]},
+   {t:"Contributors to decision-making",rows:[["Precedent","Experience and history"],["Authority","God, law, employer, codes"],["Logic","Problem-solving, oriented toward the future"],["Emotion","Personal feelings and intuition"]]}
+  ];
+
+  /* ---------- short answer data ---------- */
+  var SA=[
+   ["List Bok's steps in order.","Conscience; expert advice with at least three options; public discussion (in your head is OK); decide; evaluate."],
+   ["List the Potter Box steps in order.","Facts; values; principles; loyalties; decide; evaluate."],
+   ["Why does the Potter Box have a feedback loop?","Your decision becomes a new fact, so you may need to run the box again, and the outcome might change."],
+   ["Give three reasons to evaluate a decision after you act.","Any three: justify the action taken, consider repercussions, make necessary changes, identify new ethical situations, self-reflection."],
+   ["Name the four contributors to sound decision-making and mark which are internal or external.","Precedent (experience, history); authority (God, law, employer, codes: external); logic (future-oriented problem solving); emotion (feelings, intuition: internal)."],
+   ["In one or two sentences, explain the veil of ignorance and where it fits in TARES.","You decide as if you did not know your own position, which levels the playing field and equalizes power. In TARES it fits Equity: would the appeal seem legitimate if you were on the receiving end?"],
+   ["Name the five TARES elements.","Truthfulness, Authenticity, Respect, Equity, Social responsibility."],
+   ["How is Truthfulness different from Authenticity in TARES?","Truthfulness is whether the claims, verbal and visual, are accurate and not deceptive (fact check). Authenticity is the advertiser's sincerity and intent: would they be persuaded by their own message, and do they take responsibility for it?"],
+   ["Why is a one-sided ad not automatically unethical?","Ads are advocacy and inherently one-sided. Biased does not mean false or misleading. Honest one-sidedness can pass TARES, unlike news, which should give multiple perspectives."],
+   ["List the six criteria used to decide whether an occupation is a profession.","Specialized knowledge (training, accreditation, licensing); public service over self service; associations; self-regulation and enforceable ethics codes; status; autonomy."],
+   ["Why are communication ethics codes not 'enforceable' in the profession sense?","Enforceable means you would lose the ability to practice, as with disbarment. Communication codes are voluntary, with no legal enforcement. You may get fired but you can still communicate."],
+   ["What does a news ombuds do? Give one pro and one con of the role.","An independent boundary spanner between newsroom and public who explains journalism, investigates complaints and recommends fixes. Pro: more transparency and trust. Con: funded by the organization and cannot change policy."],
+   ["Explain the difference between a Mill question and a Ross question.","Mill asks 'what if', weighing potential outcomes. Ross looks at the context that created the dilemma now, weighing competing duties to find the duty proper."],
+   ["Define enlightened self-interest and give one example.","Doing good for others that also benefits you. Example: a company donates products to first responders and builds an ad around it."],
+   ["Define an ethical dilemma in one sentence.","A situation with good, right arguments on more than one side that requires careful moral reasoning, unlike a right-versus-wrong temptation."],
+   ["Paraphrase in one sentence: 'The code is entirely voluntary. It is not a legal document; it has no enforcement provisions or penalties for violations.' (SPJ)","Sample: SPJ says following its code is a choice, since it carries no legal force or punishments."]
+  ];
+
+  /* ---------- decision cases ---------- */
+  var BOK=[["Conscience","How do you feel about the act itself?"],["Expert advice and options","Who would you ask, living or dead, and what would they say? List at least three options."],["Public discussion","How would each affected party respond? Name them."],["Decide","What will you do?"],["Evaluate","How will you assess it afterward?"]];
+  var POT=[["Facts","Just the facts."],["Values","What would you give up other things for? Which values compete?"],["Principles","Apply 1-2 dead guys by name. What does each recommend here?"],["Loyalties","To which people (including yourself)? Prioritize them."],["Decide","What will you do?"],["Evaluate","How will you assess it afterward?"]];
+  var CASES=[
+   {t:"Police posing as journalists",
+    s:"You are a TV news director. Police at a hostage scene call and ask your crew to bring a camera so an officer can pose as a cameraman and get a man to release hostages. The camera would not actually record.",
+    f:["A man crashed a car into a convenience store and held two people hostage with scissors.","In the real incident, police posed as a TV crew; the camera light was on but the camera was off.","A Poynter faculty member called it acceptable only as an extremely unusual last resort, fully disclosed to the public.","His concern: journalists already face people who see them as an arm of law enforcement."],
+    c:["Facts stated plainly: who is at risk, what is being asked, what is not recorded.","Values that compete: protecting lives vs. honesty and press independence.","Loyalties to people: the hostages, your crew, viewers, the community, yourself.","Principles used by name: for example Mill (lives saved vs. long-term harm to public trust), Kant (could you will every agency to impersonate journalists?), Ross (duty to protect life vs. duty of independence in this context).","At least three options: lend gear, record on a phone and promise to offer it to media, send a real journalist in, decline and disclose.","Add-on tests: disclosure after the fact is a light of day check.","A clear decision and how you would evaluate it, including explaining it publicly."]},
+   {t:"The minister who asks not to be named",
+    s:"You are the reporter covering a trial of men accused of pimping. A local minister admitted on the stand that he paid for sex. In the newsroom he begs you not to print his name, saying it will destroy his marriage, his standing with his kids and his job. Decide whether to name him.",
+    f:["Four girls aged 14 to 16 testified and were not named in coverage.","The minister admitted his occupation under oath.","Later facts: every man arrested for pimping was Black, while all the prostitutes and testifying customers were white, and the jury returned a not-guilty verdict."],
+    c:["Facts first, including that testimony was in open court.","Values that compete: truth and the public record vs. privacy and harm to his family.","Loyalties: readers, the minister, his family, your editor, the young women, yourself.","Principles used by name, for example Mill (harm to his family vs. public interest) and Kant (do not treat him merely as a means).","Feedback loop: if you run his name, the fallout becomes a new fact. If you withhold it and readers find out, lost credibility becomes the new fact.","Re-run with the later facts: the focus shifts to stereotyping and how minorities are portrayed.","Veil of ignorance: would your choice change if you did not know whether you were the minister?"]},
+   {t:"Journalists and political donations",
+    s:"You are an editor writing your newsroom's policy. Should journalists be allowed to give money to political candidates? The options on the table are no, yes, or yes only if they disclose to readers.",
+    f:["Argument for no: it hurts credibility if journalists give money to candidates.","Argument for yes: it is no one's business what citizens do on their own time.","Argument for disclosure: it keeps transparency without banning the activity.","A social media guideline reminds staff that personal and professional lives merge online and their words extend their news organization."],
+    c:["Facts: what the policy covers and who it affects.","Values that compete: credibility and independence vs. citizens' private rights.","Loyalties: readers, your newsroom and owners, your journalists, the profession, yourself.","Principles used by name, for example Communitarian (trust in the press as a community good), Mill (consequences of each option), Kant (a rule you could universalize).","At least three options in Bok: ban, allow, require disclosure, and variations.","Ventilation: ask staff and outside experts what you missed.","A clear policy decision and a plan to evaluate how it works."]}
+  ];
+
+  /* ---------- TARES ads ---------- */
+  var ADS=[
+   {t:"BrainWave+",ad:"An actor in a white coat, introduced only as 'Dr. Mark,' says: 'BrainWave+ is clinically proven to boost memory by 40%. Join two million smart people. Only the smartest choose BrainWave+.'",fine:"Fine print, 2 seconds on screen: *Based on a company-run survey of 30 customers.",
+    L:[["T","C","'Clinically proven' and '40%' rest on a survey of 30 customers run by the company."],["A","C","A paid actor posing as a doctor without disclosure is not sincere or accountable."],["R","C","'Only the smartest' implies you are not smart if you don't buy."],["E","C","The key info is in fine print the average viewer can't read, and no real study is easy to find."],["S","C","Health claims aimed at people worried about memory loss, a vulnerable group."]]},
+   {t:"A PAC attack ad",ad:"Narrator: 'Councilmember Ruiz voted to cut library hours. Tell Ruiz: hands off our libraries.' A readable 'Paid for by Citizens for Better Streets PAC' is on screen for five seconds, and the description links to the vote record.",fine:"Background facts: the same budget cut hours at one branch and added hours at two others.",
+    L:[["T","C","Technically true but misleading: it leaves out information that changes how the vote reads."],["A","P","The sponsor is disclosed and openly advocating. Arguable, but sincerity is not the problem."],["R","P","No stereotypes or insults toward viewers or people in the ad."],["E","P","Viewers can find the vote record, so they can get more information if they look."],["S","C","Arguable. A misleading framing of a vote can lower trust in political ads."]]},
+   {t:"Hometown Credit Union",ad:"'No monthly fee on savings. Member-owned, member-first. See rates and terms at hometowncu.example/rates, or ask any teller.'",fine:"",
+    L:[["T","P","The claim is simple, checkable and linked to full terms."],["A","P","Nothing suggests the advertiser doesn't mean it, and it names who is speaking."],["R","P","Plain, direct language that treats the audience as capable adults."],["E","P","Anyone can understand it and find more info."],["S","P","No group is harmed. Honest one-sidedness and enlightened self-interest are fine."]]}
+  ];
+
+  /* ---------- flashcards ---------- */
+  var FC=[
+   ["Bok","Bok's three steps?","Conscience; expert advice (with at least three options); public discussion."],
+   ["Bok","Two premises of Bok's model?","We need empathy for the people involved, and keeping social trust is a fundamental goal."],
+   ["Bok","When is Bok best used?","In advance of a dilemma, not in the heat of the moment. Always finish all three steps."],
+   ["Bok","Is it OK to hold the public discussion in your head?","Yes, if getting everyone together isn't feasible. Write it down."],
+   ["Potter","Potter Box order?","Facts, values, principles, loyalties, then decide and evaluate."],
+   ["Potter","What counts as a value in Potter?","What you would give up other things for (truth, privacy, job). Respect and transparency go here, not in loyalties."],
+   ["Potter","What are loyalties in Potter?","Commitments to people, including yourself. Prioritize them."],
+   ["Potter","Potter's feedback loop?","Your decision becomes a new fact; you may re-run the box."],
+   ["Tools","Ventilation test","Ask trusted people and experts, 'Did I miss something? Other options?'"],
+   ["Tools","Light of day test","Would I take full, open responsibility? Also called the Mom test."],
+   ["Tools","Veil of ignorance","Rawls: decide without knowing your position. Level the playing field and equalize power."],
+   ["Tools","Why evaluate decisions?","Justify the action, consider repercussions, make changes, identify new ethical situations, self-reflection."],
+   ["Tools","Contributors to sound decisions","Precedent, authority (external), logic (future), emotion (internal)."],
+   ["TARES","T Truthfulness","Are claims, verbal and visual, truthful? Are omissions deceptive? Fact check, go to cited sources."],
+   ["TARES","A Authenticity","Advertiser sincerity and intent. Would they buy their own message? Disclosure, stereotypes."],
+   ["TARES","R Respect","Respect for the audience and those in the ad. Light of day test. Links to Kant."],
+   ["TARES","E Equity","Level playing field. Equal comprehension, veil of ignorance. Not objectivity, not diversity."],
+   ["TARES","S Social responsibility","If everyone could buy it, is society improved or not harmed? Does it raise or lower trust in persuasion? Links to Mill."],
+   ["TARES","How do you decide if an ad passes?","Purists: all five. Others: a majority. Some: one egregious failure sinks it. Your call, with reasons."],
+   ["TARES","Are one-sided ads unethical?","Not inherently. Ads are one-sided advocacy; news should give multiple perspectives."],
+   ["Profession","Six criteria","Specialized knowledge, public service over self service, associations, self-regulation/enforceable codes, status, autonomy."],
+   ["Profession","Training vs accreditation vs licensing","Training: often a degree. Accreditation: optional seal from an association. Licensing: required legal approval."],
+   ["Profession","What does 'enforceable' mean for ethics codes?","You lose the ability to practice. No communication codes are legally enforceable."],
+   ["Profession","Semi-profession?","Some but not all of the six criteria met."],
+   ["Profession","What does an ombuds do?","Independent boundary spanner between organization and public. Investigates complaints, recommends changes, cannot set policy."],
+   ["Dead guys","Aristotle","Golden mean between deficiency and excess. Focus: moral agent."],
+   ["Dead guys","Kant","Categorical imperative: rules for everyone, no what-ifs. Focus: act."],
+   ["Dead guys","Mill","Weigh pros and cons of acting and not acting. Focus: consequences."],
+   ["Dead guys","Ross","Competing prima facie duties, context, duty proper. Focus: context."],
+   ["Dead guys","Communitarian","Community first; reciprocity, not total self-sacrifice. Focus: individual(s)/audience(s)."],
+   ["Dead guys","Mill vs Ross","Mill: 'what if', potential outcomes. Ross: what's happening now that created the dilemma."],
+   ["Moral dev","Kohlberg's levels","Pre-conventional (self-interest), conventional (norms and authority), post-conventional (universal principles, rare)."],
+   ["Moral dev","Gilligan's stages","Self-interest; choosing a victim and self-sacrifice; interdependence and compromise."],
+   ["Moral dev","Four components of moral action","Sensitivity, judgment, motivation, character."],
+   ["Moral dev","Aspirational listening","Pick a role model one stage above you and grow toward them."],
+   ["Moral dev","Regression","A temporary ethical lapse that can happen to anyone."],
+   ["Concepts","Ethical dilemma","Good, right arguments on more than one side; needs careful moral reasoning."],
+   ["Concepts","Values","Strong core beliefs, learned from a group, emotional, subjective, can change."],
+   ["Concepts","Enlightened self-interest","Doing good for others that also benefits you."],
+   ["Basics","Patchwriting","Lightly rewording a source sentence by sentence. As dishonest as plagiarism."],
+   ["Basics","Responsible AI use","AI is not a peer with moral responsibility. People are accountable. Screen for bias, keep human judgment, be transparent."]
+  ];
+
+  /* ---------- builders ---------- */
+  function buildMC(){
+    MC.forEach(function(d,i){
+      total++;
+      var box=el('div','q','<div class="q-num">MC '+(i+1)+'</div><div class="q-text"></div><div class="opts"></div><div class="explain"></div>');
+      box.querySelector('.q-text').textContent=d.q;
+      var wrap=box.querySelector('.opts');
+      d.o.forEach(function(txt,k){
+        var b=el('button','opt'); b.type='button'; b.textContent=String.fromCharCode(65+k)+'. '+txt;
+        b.addEventListener('click',function(){
+          var all=wrap.querySelectorAll('.opt'); all.forEach(function(x){x.disabled=true});
+          var ok=k===d.a; b.classList.add(ok?'correct':'incorrect'); if(!ok) all[d.a].classList.add('correct');
+          answered++; if(ok) score++; paint(); mark(box,ok,d.e);
+        });
+        wrap.appendChild(b);
+      });
+      $('mc-list').appendChild(box);
+    });
+  }
+  function buildTF(){
+    TF.forEach(function(d,i){
+      total++;
+      var box=el('div','q','<div class="q-num">T/F '+(i+1)+'</div><div class="q-text"></div><div class="opts tf"></div><div class="explain"></div>');
+      box.querySelector('.q-text').textContent=d[0];
+      var wrap=box.querySelector('.opts');
+      [true,false].forEach(function(v){
+        var b=el('button','opt'); b.type='button'; b.textContent=v?'True':'False';
+        b.addEventListener('click',function(){
+          var all=wrap.querySelectorAll('.opt'); all.forEach(function(x){x.disabled=true});
+          var ok=v===d[1]; b.classList.add(ok?'correct':'incorrect'); if(!ok) all[d[1]?0:1].classList.add('correct');
+          answered++; if(ok) score++; paint(); mark(box,ok,d[2]);
+        });
+        wrap.appendChild(b);
+      });
+      $('tf-list').appendChild(box);
+    });
+  }
+  function buildOrder(){
+    ORDER.forEach(function(d){
+      total++;
+      var box=el('div','q','<div class="q-text"></div><div class="chips"></div><div class="seq"></div><div class="explain"></div>');
+      box.querySelector('.q-text').textContent=d.t;
+      var chips=box.querySelector('.chips'), seq=box.querySelector('.seq');
+      var next=0, errs=0, done=false;
+      shuffle(d.s).forEach(function(txt){
+        var b=el('button','chip'); b.type='button'; b.textContent=txt;
+        b.addEventListener('click',function(){
+          if(done||b.classList.contains('used')) return;
+          if(txt===d.s[next]){
+            b.classList.add('used'); b.disabled=true; seq.appendChild(el('div',null,txt)); next++;
+            if(next===d.s.length){done=true; answered++; var ok=errs===0; if(ok) score++; paint(); mark(box,ok,ok?'Perfect order.':'Right order, but with '+errs+' misstep'+(errs>1?'s':'')+'. Try it again next time without a miss.');}
+          } else {errs++; b.classList.add('flash'); setTimeout(function(){b.classList.remove('flash')},500);}
+        });
+        chips.appendChild(b);
+      });
+      $('order-list').appendChild(box);
+    });
+  }
+  function buildMatch(){
+    MATCH.forEach(function(g){
+      var box=el('div','q','<div class="q-text"></div><div class="rows"></div><div class="row"><button class="btn solid" type="button">Check</button></div><div class="explain"></div>');
+      box.querySelector('.q-text').textContent=g.t;
+      var rows=box.querySelector('.rows'), sels=[];
+      var opts=shuffle(g.rows.map(function(r){return r[1]}));
+      g.rows.forEach(function(r){
+        var row=el('div','mrow','<div class="term"></div>'); row.firstChild.textContent=r[0];
+        var s=el('select'); s.id='m_'+Math.random().toString(36).slice(2,8);
+        s.appendChild(new Option('Choose...',''));
+        opts.forEach(function(o){s.appendChild(new Option(o,o))});
+        row.appendChild(s); rows.appendChild(row); sels.push([s,r[1],row]);
+      });
+      var btn=box.querySelector('.btn'), locked=false;
+      total+=g.rows.length;
+      btn.addEventListener('click',function(){
+        if(locked) return;
+        if(sels.some(function(x){return !x[0].value})){var ex=box.querySelector('.explain'); ex.innerHTML='<b class="no">Fill every row first.</b>'; ex.classList.add('show'); return;}
+        locked=true; var good=0;
+        sels.forEach(function(x){
+          var ok=x[0].value===x[1]; x[0].disabled=true; x[0].classList.add(ok?'correct':'incorrect');
+          if(ok) good++; else x[2].appendChild(el('div','fix','Answer: '+x[1]));
+        });
+        score+=good; answered+=sels.length; paint(); btn.disabled=true;
+        mark(box,good===sels.length,good+' of '+sels.length+' matched.');
+      });
+      $('match-list').appendChild(box);
+    });
+  }
+  function buildSA(){
+    SA.forEach(function(d,i){
+      var box=el('div','q','<div class="q-num">SA '+(i+1)+'</div><div class="q-text"></div><textarea placeholder="Type your answer here..."></textarea><div class="row"><button class="btn" type="button">Show model answer</button></div><div class="model"></div>');
+      box.querySelector('.q-text').textContent=d[0];
+      var ta=box.querySelector('textarea'); ta.id='sa_'+i;
+      var m=box.querySelector('.model'); m.textContent=d[1];
+      var b=box.querySelector('.btn');
+      b.addEventListener('click',function(){m.classList.toggle('show'); b.textContent=m.classList.contains('show')?'Hide model answer':'Show model answer';});
+      $('sa-list').appendChild(box);
+    });
+  }
+  function buildCases(){
+    CASES.forEach(function(c,ci){
+      var box=el('div','q','<div class="q-num">CASE '+(ci+1)+'</div><div class="q-text"></div><p class="sc" style="margin:0 0 10px;font-size:15px"></p><div class="facts"><b>Case facts</b><ul></ul></div><div class="toolpick"><button type="button" class="btn on">Bok</button><button type="button" class="btn">Potter</button></div><div class="steps"></div><div class="step"><label>Add-on tests</label><div class="adds"></div></div><div class="row"><button class="btn" type="button">Show what a strong answer covers</button></div><div class="model"></div>');
+      box.querySelector('.q-text').textContent=c.t;
+      box.querySelector('.sc').textContent=c.s;
+      var ul=box.querySelector('.facts ul'); c.f.forEach(function(f){var li=document.createElement('li'); li.textContent=f; ul.appendChild(li);});
+      var pick=box.querySelectorAll('.toolpick .btn');
+      var steps=box.querySelector('.steps'); var tool='Bok';
+      function drawSteps(){
+        steps.innerHTML=''; var list=tool==='Bok'?BOK:POT;
+        list.forEach(function(s,i){
+          var d=el('div','step','<label></label><textarea></textarea>');
+          var ta=d.querySelector('textarea'); ta.id='case'+ci+tool+i; ta.placeholder='Your answer...';
+          d.querySelector('label').textContent=(i+1)+'. '+s[0]+' - '+s[1];
+          steps.appendChild(d);
+        });
+      }
+      pick[0].addEventListener('click',function(){tool='Bok';pick[0].classList.add('on');pick[1].classList.remove('on');drawSteps();});
+      pick[1].addEventListener('click',function(){tool='Potter';pick[1].classList.add('on');pick[0].classList.remove('on');drawSteps();});
+      drawSteps();
+      var adds=box.querySelector('.adds');
+      ['Ventilation: who would I ask, and what might I have missed?','Light of day: would I take full, open responsibility?','Veil of ignorance: would I choose this without knowing which party I am?'].forEach(function(t,k){
+        var id='add'+ci+k; var l=el('label','check','<input type="checkbox" id="'+id+'"><span></span>'); l.querySelector('span').textContent=t; l.htmlFor=id; adds.appendChild(l);
+      });
+      var m=box.querySelector('.model'), b=box.querySelector('.row .btn');
+      var h='<b>A strong answer covers:</b>';
+      c.c.forEach(function(x,k){var id='cv'+ci+'_'+k; h+='<label class="check" for="'+id+'"><input type="checkbox" id="'+id+'"><span>'+x+'</span></label>';});
+      m.innerHTML=h;
+      b.addEventListener('click',function(){m.classList.toggle('show'); b.textContent=m.classList.contains('show')?'Hide checklist':'Show what a strong answer covers';});
+      $('case-list').appendChild(box);
+    });
+  }
+  function buildAds(){
+    ADS.forEach(function(a,ai){
+      var box=el('div','q','<div class="q-num">AD '+(ai+1)+'</div><div class="q-text"></div><div class="ad"><div class="adtxt"></div><div class="fine"></div></div><div class="lts"></div><div class="stat tally" style="margin-top:8px"></div>');
+      box.querySelector('.q-text').textContent=a.t;
+      box.querySelector('.adtxt').textContent=a.ad;
+      var fine=box.querySelector('.fine'); if(a.fine) fine.textContent=a.fine; else fine.remove();
+      var lts=box.querySelector('.lts'), tally=box.querySelector('.tally'), done=0, match=0;
+      var names={T:'T  Truthfulness',A:'A  Authenticity',R:'R  Respect',E:'E  Equity',S:'S  Social resp.'};
+      a.L.forEach(function(l){
+        var row=el('div','lt','<div class="name"></div><div class="picks"><button type="button" class="btn">Pass</button><button type="button" class="btn">Concern</button></div><div class="why"></div>');
+        row.querySelector('.name').textContent=names[l[0]];
+        var bs=row.querySelectorAll('.btn'), why=row.querySelector('.why'), got=false;
+        [['P',0],['C',1]].forEach(function(p){
+          bs[p[1]].addEventListener('click',function(){
+            if(got) return; got=true; bs[p[1]].classList.add('sel');
+            var ok=p[0]===l[1]; done++; if(ok) match++;
+            why.innerHTML=(ok?'<b class="ok">Matches my read.</b> ':'<b class="no">Different from my read.</b> ')+'Suggested: '+(l[1]==='P'?'Pass':'Concern')+'. ';
+            why.appendChild(document.createTextNode(l[2]));
+            tally.textContent='Matched my read on '+match+' of '+done;
+          });
+        });
+        lts.appendChild(row);
+      });
+      $('ad-list').appendChild(box);
+    });
+  }
+
+  /* flashcards */
+  var topics=['All'], cur='All', deck=[], idx=0, flipped=false;
+  FC.forEach(function(c){if(topics.indexOf(c[0])<0) topics.push(c[0]);});
+  function fcDeck(){deck=FC.filter(function(c){return cur==='All'||c[0]===cur}); if(idx>=deck.length) idx=0;}
+  function fcDraw(){
+    var c=deck[idx], card=$('fc-card');
+    card.className='card-in'+(flipped?' back':'');
+    card.innerHTML='<div class="side">'+(flipped?'Answer':c[0])+'</div><div class="txt"></div>';
+    card.querySelector('.txt').textContent=flipped?c[2]:c[1];
+    card.setAttribute('aria-label',flipped?'Answer. Click to show the question.':'Question. Click to show the answer.');
+    $('fc-count').textContent=(idx+1)+' / '+deck.length;
+  }
+  function fcFilters(){
+    var f=$('fc-filter'); f.innerHTML='';
+    topics.forEach(function(t){
+      var b=el('button','btn'+(t===cur?' on':'')); b.type='button'; b.textContent=t;
+      b.addEventListener('click',function(){cur=t;idx=0;flipped=false;fcDeck();fcFilters();fcDraw();});
+      f.appendChild(b);
+    });
+  }
+  $('fc-card').addEventListener('click',function(){flipped=!flipped;fcDraw();});
+  $('fc-next').addEventListener('click',function(){idx=(idx+1)%deck.length;flipped=false;fcDraw();});
+  $('fc-prev').addEventListener('click',function(){idx=(idx-1+deck.length)%deck.length;flipped=false;fcDraw();});
+  $('fc-shuf').addEventListener('click',function(){FC=shuffle(FC);idx=0;flipped=false;fcDeck();fcDraw();});
+
+  /* nav */
+  [['learn','Know cold'],['mc','Multiple choice'],['tf','True/false'],['order','Order'],['match','Matching'],['sa','Short answer'],['cases','Decision cases'],['tares','TARES an ad'],['cards','Flashcards']].forEach(function(n){
+    var b=el('button',null,n[1]); b.type='button';
+    b.addEventListener('click',function(){var t=$(n[0]); if(t.scrollIntoView) t.scrollIntoView({behavior:'smooth',block:'start'});});
+    $('nav').appendChild(b);
+  });
+
+  /* reset: rebuild everything */
+  function buildAll(){
+    ['mc-list','tf-list','order-list','match-list','sa-list','case-list','ad-list'].forEach(function(i){$(i).innerHTML=''});
+    score=0; total=0; answered=0;
+    buildMC(); buildTF(); buildOrder(); buildMatch(); buildSA(); buildCases(); buildAds(); paint();
+  }
+  $('reset').addEventListener('click',function(){buildAll(); window.scrollTo({top:0,behavior:'smooth'});});
+
+  buildAll(); fcFilters(); fcDeck(); fcDraw();
+})();
+</script>
+
+</body></html>
