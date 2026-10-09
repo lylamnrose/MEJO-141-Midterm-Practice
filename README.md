@@ -8,3 +8,4 @@ Decision cases: Each case lets you pick Bok or Potter and write your own step-by
 
 TARES ads: I made up the three ads and their suggested ratings, so treat them as a judgment call.
 
+Acces the site page here: https://lylamnrose.github.io/MEJO-141-Midterm-Practice/
